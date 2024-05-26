@@ -1,0 +1,28 @@
+[package]
+name = "cowcounter"
+version = "0.1.0"
+edition = "2021"
+authors = ["William Findlay"]
+homepage = "https://www.github.com/willfindlay/cowcounter"
+description = "Don't use this if you're not Cow. You have been warned."
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.82"
+askama = { version = "0.12.1", features = ["with-axum"] }
+askama_axum = "0.4.0"
+axum = "0.7.5"
+dotenv = "0.15.0"
+humantime = "2.1.0"
+regex = "1.10.4"
+serde = { version = "1.0.198", features = ["derive"] }
+tokio = { version = "1.37.0", features = ["full"] }
+tower = "0.4.13"
+tower-http = { version = "0.5.2", features = ["fs"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+windows-sys = { version = "0.52.0", features = [
+    "Win32_UI_WindowsAndMessaging",
+] }
+wmi = "0.13.3"

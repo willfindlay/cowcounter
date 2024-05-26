@@ -1,0 +1,8 @@
+body {background-color: black;}
+.counter {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 128px;
+    font-weight: bold;
+    color: white;
+    text-align: right;
+}
