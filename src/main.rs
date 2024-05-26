@@ -33,9 +33,11 @@ async fn main() -> Result<()> {
     {
         let counter = counter.clone();
         tokio::spawn(async move {
-            tokio::time::sleep(backup_interval).await;
-            if let Err(e) = counter.save().await {
-                tracing::error!(err = ?e, "failed to save counter")
+            loop {
+                tokio::time::sleep(backup_interval).await;
+                if let Err(e) = counter.save().await {
+                    tracing::error!(err = ?e, "failed to save counter")
+                }
             }
         });
     }

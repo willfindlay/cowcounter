@@ -49,6 +49,7 @@ impl Counter {
 
     async fn add(&self, event: &NewProcessEvent) {
         let mut inner = self.inner.lock().await;
+        tracing::info!(name = &event.target_instance.name, "new window detected");
         if inner.re.is_match(&event.target_instance.name) {
             inner.count += 1;
         }
@@ -61,9 +62,12 @@ impl Counter {
 
     pub async fn save(&self) -> Result<()> {
         let inner = self.inner.lock().await;
+
         let count = inner.count;
         std::fs::write(&inner.savefile, count.to_string())
             .expect("failed to dump count to save file");
+        tracing::info!(count = count, file = ?inner.savefile, "saved count");
+
         Ok(())
     }
 
@@ -76,6 +80,7 @@ impl Counter {
 
         if let Some(line) = line {
             let count: u64 = line.parse()?;
+            tracing::info!(count = count, file = ?inner.savefile, "loaded count");
             inner.count = count;
         }
 
