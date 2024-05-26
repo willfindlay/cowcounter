@@ -20,6 +20,10 @@ The following settings can be configured via environment variables:
 - `COWCOUNTER_SAVEFILE`: pathname for save file (default `counter.txt`)
 - `COWCOUNTER_BACKUP_INTERVAL`: backup interval for saving the counter to disk (default `5m`)
 
+## Importing Into OBS
+
+Create a browser source and set the URL to `localhost:7788` or whatever port you decided to use.
+
 To configure the appearance of the counter, add custom CSS when setting up the browser source. For example, you can select the counter by its class:
 
 ```css
